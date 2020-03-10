@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .flex_wrapper,
+    .flex_wrapper2,
+    .flex_wrapper3 {
+      width: 800px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    .flex_wrapper {
+      /*水平置中*/
+      justify-content: space-around;
+      border: 1px solid cadetblue;
+    }
+
+    .flex_wrapper>div {
+      width: 100px;
+      height: 100px;
+      background-color: cadetblue;
+    }
+
+    .flex_wrapper2 {
+      /*垂直置中*/
+      height: 500px;
+      flex-wrap: wrap;
+      align-content: center;
+      border: 1px solid burlywood;
+    }
+
+    .flex_wrapper2>div {
+      width: 300px;
+      height: 100px;
+      margin: 5px 5px;
+      background-color: burlywood;
+    }
+
+    .flex_wrapper3 {
+      /*垂直置中*/
+      flex-wrap: wrap;
+      height: 500px;
+      align-items: center;
+      border: 1px solid lightpink;
+    }
+
+    .flex_wrapper3>div {
+      width: 300px;
+      height: 100px;
+      margin: 5px 5px;
+      background-color: lightpink;
+    }
+
+    .gotop {
+      width: 50px;
+      height: 50px;
+      background-color: black;
+      border-radius: 25px;
+      color: white;
+      position: fixed;
+      font-size: 36px;
+      line-height: 50px;
+      transform: rotate(-90deg);
+      right: 5px;
+      bottom: 5%;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- flex水平置中 -->
+  <h3>水平置中</h3>
+  <div class="flex_wrapper">
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+  </div>
+
+  <!-- flex垂直置中 align-content -->
+  <h3>align-content垂直置中</h3>
+  <div class="flex_wrapper2">
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+  </div>
+
+  <!-- flex垂直置中 align-items -->
+  <h3>align-items垂直置中</h3>
+  <div class="flex_wrapper3">
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+  </div>
+  <div class="gotop" id="gotop">></div>
+  <!-- 
+    align-content→下在父層，針對多行
+    align-items→下在父層，針對單行
+    align-self→下在子層
+   -->
+
+  <script>
+    window.addEventListener('scroll', function () {
+      if (this.scrollY != 0) {
+        document.getElementById('gotop').style.display = "block";
+      } else if (this.scrollY == 0) {
+        document.getElementById('gotop').style.display = "none";
+      }
+    });
+    document.getElementById("gotop").addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    })
+  </script>
+</body>
+
+</html>

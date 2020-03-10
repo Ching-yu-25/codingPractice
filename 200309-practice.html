@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice -- LV2</title>
+</head>
+
+<body>
+  <!-- 
+    習題出處
+    https://medium.com/@pvt5r486/%E5%88%9D%E7%B4%9A-javascript-%E9%A1%8C%E7%9B%AE%E7%B7%B4%E7%BF%92-1aa63509e63c
+   -->
+  <script>
+    /*LV1 -- for*/
+    document.write(`for迴圈`);
+    for (let i = 1; i < 10; i++) {
+      document.write(`${i}<br>`);
+    }
+    /*LV1 -- while*/
+    document.write(`<hr>while迴圈<br>`);
+    let j = 1;
+    while (j < 10) {
+      document.write(`${j}<br>`);
+      j++;
+    }
+    /*LV1 -- print*/
+    document.write(`<hr>print函式<br>`);
+
+    function print(num) {
+      for (let m = 1; m <= num; m++) {
+        document.write(`${m}<br>`);
+      }
+    }
+    print(10);
+  </script>
+
+  <script>
+    /*LV1 -- star*/
+    document.write(`<hr>star<br>`);
+
+    function star(count) {
+      for (let i = 0; i < count; i++) {
+        document.write(`*`);
+      }
+      document.write(`<br>`);
+    }
+    star(3);
+
+    /*LV1 -- starReturn*/
+    document.write(`<hr>starReturn<br>看console結果`);
+    let starStr = "";
+
+    function starReturn(count) {
+      for (let i = 0; i < count; i++) {
+        starStr += "*";
+      }
+      return starStr;
+    }
+    console.log(starReturn(5));
+
+    /* LV1 -- isUpperCase */
+    function isUpperCase(str) {
+      //65 為 A 的 ASCII CODE 90 為 Z
+      //charCodeAt
+
+      //console.log(str[0]); -- 這樣寫可以直接取字串的第幾個位置
+      // if (str[0].charCodeAt() >= 65 && str[0].charCodeAt() <= 90) {
+      //   console.log(`${str}-- true`);
+      // } else {
+      //   console.log(`${str}-- false`);
+      // }
+      //三元運算式
+      str[0].charCodeAt() >= 65 && str[0].charCodeAt() <= 90 ? console.log(`${str}-- true`) : console.log(
+        `${str}-- false`);
+    }
+    isUpperCase('hey');
+    isUpperCase('Hey');
+
+    /* LV1 -- position */
+    function position(str) {
+      for (let i = 0; i < str.length; i++) {
+        if (str[i].charCodeAt() >= 65 && str[i].charCodeAt() <= 90) {
+          return `true -- ${str[i]} ${i}`; //return完就離開function不會執行到下面的-1，除非都沒有進判斷式
+        }
+      }
+      return `false -- ${str}`;
+    }
+
+    console.log(position('hey'));
+    console.log(position('aloHa'));
+
+    /* LV1 -- findSmartCount*/
+    function findSmallCount(arr, num) {
+      arrFiliter = arr.filter(arr2 => arr2 < num); //arrFiliter是一個陣列
+      return `小於${num}的數有${arrFiliter.length}個`;
+    }
+    console.log(findSmallCount([1, 2, 3, 4, 5, 6], 3));
+
+    /* LV1 --  findSmallerTotal*/
+    function findSmallerTotal(arr, num) {
+      arrFiliter = arr.filter(arr2 => arr2 < num); //arrFiliter是一個陣列
+      let sum = (accumulator,
+        currentValue) => accumulator + currentValue; //累加器
+      return `比${num}小的數合計${arrFiliter.reduce(sum)}`;
+    }
+    console.log(findSmallerTotal([1, 2, 3, 4, 5, 6], 3));
+
+    /* LV1 -- findAllSmall*/
+    function findAllSmall(arr, num) {
+      arrFiliter = arr.filter(arr2 => arr2 < num); //arrFiliter是一個陣列
+      return `小於${num}的數有${arrFiliter}`;
+    }
+    console.log(findAllSmall([1, 2, 3, 4, 5, 6], 3));
+
+    /*LV1 -- sum*/
+    function sum(arr) {
+      let sum2 = (accumulator,
+        currentValue) => accumulator + currentValue; //累加器
+      return `合計${arr.reduce(sum2,0)}`; //沒給 0 預設是 null
+    }
+    console.log(sum([1, 2, 3, 4, 5, 6]));
+  </script>
+</body>
+
+</html>

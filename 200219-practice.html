@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- es6 Promise test -->
+  <script>
+    let promiseObj = (who) => {
+      let time = parseInt(Math.random() * 2); //隨機1或0
+      console.log(`${who}開始跑`);
+      return new Promise((resolve, reject) => {
+        if (time) { //如果是1就執行
+          setTimeout(function () {
+            resolve(`${who}經過3秒`);
+          }, 3000);
+        } else {
+          reject(new Error(`${who}跌倒`));
+        }
+      });
+    }
+
+    promiseObj('lio').then((data) => {
+      console.log(`${data}`); //這裡的data接到的是resolve收到的內容=>`${who}經過3秒`
+    }).catch((err) => {
+      console.log(`${err}`); //這裡的err接到的是reject收到的內容=>`${who}跌倒`
+    });
+  </script>
+
+  <!-- promise 自己練習 -->
+  <script>
+    let handler = (who) => {
+      let timer = parseInt(Math.random() * 10 + 1);
+      return new Promise((resolve, reject) => {
+        if (timer < 5) {
+          setTimeout(function () {
+            resolve(`${who}跑了${timer}秒`);
+          }, timer * 1000);
+        } else {
+          reject(new Error(`${who}跑了${timer}秒`));
+        }
+      });
+    };
+
+    handler('kasa').then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  </script>
+
+  <!-- 0220再練習Promise -->
+  <script>
+    let promiseObj3 = (who) => {
+      let option = parseInt(Math.random() * 2);
+      return new Promise((resolve, reject) => {
+        if (option) {
+          setTimeout(function () {
+            resolve(`${who} runs`);
+          }, 5000);
+        } else {
+          reject(`${who} falls`);
+        }
+      });
+    };
+    promiseObj3('galo').then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  </script>
+
+  <!-- 印星星 -->
+  <script>
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < i; j++) {
+        document.write("*");
+      }
+      document.write("<br>");
+    }
+  </script>
+
+  <!-- this -->
+  <script>
+    function thisTest() {
+      document.write(`thisObj---${this}<br>`);
+    }
+    let thisObj2 = () => document.write(`thisObj2---${this}<br>`);
+    let thisObj3 = {
+      thisTest2() {
+        document.write(`thisObj3---${this}<br>`);
+      },
+    };
+    thisTest(); //指向window
+    thisObj2(); //指向window
+    thisObj3.thisTest2(); //指向物件
+  </script>
+
+  <!-- const -->
+  <script>
+    const num = 2;
+    document.write(`num:${num}<br>`);
+    /*num = 3;
+    document.write(`num:${num}<br>`);
+    常數不能重新給值
+    */
+    const numobj = { //如果宣告成物件就可以重新給值
+      num: 2,
+    }
+    document.write(`numobj:${numobj.num}<br>`);
+    numobj.num = 3;
+    document.write(`numobj:${numobj.num}<br>`);
+  </script>
+
+  <!-- filiter/map/reduce -->
+  <script>
+    /*example
+        const words = ["spray", "limit", "elite", "exuberant", "destruction", "present", "happy"];
+    let longWords = words.filter(word => word.length > 6);
+    document.write(`${longWords}<br>`);
+    */
+    //filter -- 條件挑選
+    let arr = [111, 222, 333, 444, 555, 666];
+    arrFilter = arr.filter(arr1 => arr1 % 2 == 0);
+    document.write(`arrFilter---${arrFilter}<br>`);
+
+    arrFilter1 = arr.filter(function (arr1) {
+      return arr1 % 2 == 1;
+    });
+    document.write(`arrFilter---${arrFilter1}<br>`);
+
+    //find -- 條件挑選，但挑到一個就停了
+    arrFind = arr.find(arr2 => arr2 % 2 == 0);
+    document.write(`arrFind---${arrFind}<br>`);
+
+    //map -- 將每個值依條件回傳true/false，因此要用一個條件式回傳處理過的值=>新的陣列
+    arrMap = arr.map(arr3 => arr3 % 2 == 0);
+    document.write(`arrMap---${arrMap}<br>`); //arrMap---false,true,false,true,false,true
+    arrMap = arr.map(arr3 => {
+      if (arr3 % 2) {
+        return `${arr3}不會整除`;
+      } else {
+        return `${arr3}整除`;
+      }
+    });
+    document.write(`arrMap---${arrMap}<br>`);
+
+    //reduce -- 將一個累加器及陣列中每項元素（由左至右）傳入回呼函式，將陣列化為單一值。
+    let handler2 = (accumulator, currentValue) => accumulator + currentValue; //accumulator->累加,currentValue->陣列中目前傳進來的值
+    let arrReduce = arr.reduce(handler2);
+    let arrReduce2 = arr.reduce(handler2, 3);
+    document.write(`arrReduce---${arrReduce}<br>`);
+    document.write(`arrReduce2---${arrReduce2}<br>`);
+  </script>
+</body>
+
+</html>

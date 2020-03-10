@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice -- LV2</title>
+</head>
+
+<body>
+  <script>
+    /*LV2 -- stars*/
+    function stars(count) {
+      for (let i = 0; i <= count; i++) {
+        for (let j = 0; j < i; j++) {
+          document.write("*");
+        }
+        document.write("<br>");
+      }
+    }
+    stars(5);
+    document.write("<hr>");
+
+    /*LV2 -- makeStars*/
+    function makeStars(count) {
+      let starStr = "";
+      for (let i = 0; i <= count; i++) {
+        for (let j = 0; j < i; j++) {
+          starStr += "*";
+        }
+        if (i != count) {
+          starStr += "\\n"; // \n→換行 \→一個為跳脫字元
+        }
+      }
+      return starStr;
+    }
+    console.log(makeStars(3));
+
+    /*LV2 -- stars2*/
+    function stars2(count) {
+      for (var i = 0; i <= count; i++) {
+        for (var j = 0; j < i; j++) {
+          document.write("*");
+        }
+        document.write("<br>");
+      }
+      for (var k = count - 1; k > 0; k--) {
+        for (var m = 0; m < k; m++) {
+          document.write("*");
+        }
+        document.write("<br>");
+      }
+    }
+    stars2(3);
+
+    /*LV2 -- table*/
+    function table(count) {
+      for (let i = 1; i <= 9; i++) {
+        document.write(`${count}*${i}=${count*i}<br>`);
+      }
+    }
+    table(2);
+
+    /*LV2 -- table9to9*/
+    function table9to9() {
+      for (let i = 1; i <= 9; i++) {
+        for (let j = 1; j <= 9; j++) {
+          document.write(`${i}*${j}=${i*j}<br>`);
+        }
+      }
+    }
+    table9to9();
+
+    /*LV2 -- fib*/
+    function fib(num) {
+      let arr = [0, 1, 1];
+      if (num == 0) {
+        return arr[num];
+      } else if (num == 1 || num == 2) {
+        return arr[num];
+      } else {
+        for (let i = 3; i <= num; i++) {
+          arr[i] = arr[i - 2] + arr[i - 1];
+        }
+        return arr[num];
+      }
+    }
+    console.log(fib(8)); //21
+
+    /*LV2 -- reverse*/
+    function reverse(str) {
+      let newStr = "";
+      for (let i = str.length - 1; i >= 0; i--) {
+        newStr += str[i];
+      }
+      return newStr;
+    }
+    console.log(reverse("aa54321"));
+
+    /*LV2 -- swap*/
+    function swap(str) {
+      let newStr = "";
+      for (let i = 0; i < str.length; i++) {
+        if (str[i].charCodeAt() >= 65 && str[i].charCodeAt() <= 90) {
+          newStr += str[i].toLowerCase();
+        } else {
+          newStr += str[i].toUpperCase();
+        }
+      }
+      return newStr;
+    }
+    console.log(swap("ABCde"));
+
+    /*LV2 -- findMin*/
+    function findMin(arr) {
+      let temp;
+      temp = arr[0];
+      for (let i = 1; i < arr.length; i++) {
+        if (temp > arr[i]) {
+          temp = arr[i];
+        }
+      }
+      return temp;
+    }
+    console.log(findMin([10, 50, 6, 18, 22, 12, 34]));
+
+    /*LV2 -- findNthMin*/
+    function findNthMin(arr, num) {
+      let temp;
+      for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < arr[i - 1]) {
+          for (let j = i - 1; j > 0; j--) {
+            if (arr[j] > arr[i]) {}
+          }
+        }
+      }
+      return arr;
+    }
+    console.log(findNthMin([10, 50, 6, 18, 22, 12, 34], 3));
+  </script>
+</body>
+
+</html>
